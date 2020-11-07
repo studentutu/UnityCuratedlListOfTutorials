@@ -10,6 +10,8 @@ https://www.tutorialspoint.com/unity/index.htm
 
 https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html
 
+https://docs.unity3d.com/Manual/ExecutionOrder.html
+
 ## Advanced Links:
 
 https://github.com/RyanNielson/awesome-unity
