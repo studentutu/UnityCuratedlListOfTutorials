@@ -14,3 +14,5 @@ https://www.tutorialspoint.com/unity/index.htm
 https://github.com/RyanNielson/awesome-unity
 
 https://github.com/cemuka/unity-tutorials
+
+https://www.youtube.com/channel/UCG08EqOAXJk_YXPDsAvReSg
