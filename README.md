@@ -1,4 +1,5 @@
-# UnityCuratedlListOfTutorials
+# Unity Curatedl List Of Tutorials for Junior and Middle Developers
+
 Collection of usefull resources, links for a junior/middle developers
 
 ## Basics :
