@@ -159,7 +159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286785690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0adb7f69613d6c42a5aec29aced497e, type: 3}
   m_Name: 
@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 1551818565}
   - component: {fileID: 1551818564}
   - component: {fileID: 1551818563}
+  - component: {fileID: 1551818568}
   m_Layer: 0
   m_Name: TriggerCube
   m_TagString: Untagged
@@ -366,6 +367,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551818568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551818562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01514ef206a244c41a2a4ab473ef2ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMultiplayer: 0.5
+  ToMove: {fileID: 1551818562}
 --- !u!1 &1686912445
 GameObject:
   m_ObjectHideFlags: 0
