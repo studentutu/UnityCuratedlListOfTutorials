@@ -16,7 +16,6 @@ public class TestOne : MonoBehaviour
     // public Vector3 MoveToPosition => moveToPosition; // property;
     [SerializeField]
     private GameObject CobePrefab;
-
     private void Awake()
     {
         
