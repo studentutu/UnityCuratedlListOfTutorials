@@ -15,7 +15,8 @@ public class Lesso3InputPart3Mouse : MonoBehaviour
     
     private void MomentWithMouse()
     {
-        //Input.mouseScrollDelta
+        //Input.mouseScrollDelta   
+        //Homework   Bound - clampPositions values   Same 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         
@@ -32,10 +33,11 @@ public class Lesso3InputPart3Mouse : MonoBehaviour
         // Rotation with mouse -> delta mouse poisition x -> HorRotatt y-> Vertical
             
             var MouseDeltaReal = currentPos - PreviousPosition.Value;
-            
+            var MouseDeltaRealv2 =new Vector2(MouseDeltaReal.x, Mathf.Clamp(MouseDeltaReal.y,-45f, 45f )); 
+
             //Debug.Log(MouseDeltaReal);
             PreviousPosition = currentPos;
-            ToMove.transform.rotation *= Quaternion.Euler(new Vector3(MouseDeltaReal.x, MouseDeltaReal.y,0));
+            ToMove.transform.rotation *= Quaternion.Euler(new Vector3(MouseDeltaRealv2.x, MouseDeltaRealv2.y,0));
     }
 
     // Update is called once per frame
