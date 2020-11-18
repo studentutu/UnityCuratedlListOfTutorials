@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 700681664}
   - component: {fileID: 700681669}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,6 +259,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 7544671396933533446, guid: 1803392c02a786343acfe75f029fcf6d, type: 3}
   Gun2: {fileID: 0}
+  PrefabBullet:
+  - {fileID: 5921562312632928893, guid: 48eaf5af605046d448c9f07203ce1715, type: 3}
+  - {fileID: 6948394302765926323, guid: 1803392c02a786343acfe75f029fcf6d, type: 3}
+  - {fileID: 3259312318063124109, guid: c14ce30c0ef562a40a7fbbf706e2b77b, type: 3}
 --- !u!1001 &700944738
 PrefabInstance:
   m_ObjectHideFlags: 0
