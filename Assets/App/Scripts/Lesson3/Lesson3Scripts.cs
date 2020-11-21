@@ -9,7 +9,7 @@ public static class TransformExtantionals
     public static void  MoveToPosition(this Transform transform, Transform ToTarget)
     {
         Vector3 result = Vector3.Lerp(transform.position, ToTarget.transform.position,
-            Time.deltaTime * 0.5f); //run Time
+            Time.deltaTime * 2f); //run Time
 
         transform.position = result;
 
