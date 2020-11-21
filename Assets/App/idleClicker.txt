@@ -1,0 +1,15 @@
+Idle clicker
+
+1. Menu ->  
+	a) Main Menu
+	b) Settings
+	c) Store
+	       
+2.  Clicker 
+    a) 4 boosts
+        2.1. Bomb
+        2.2  Acceleration 
+        2.3 doblicate click 2x
+        2.4 Frost
+3. Spawn enemies down (Priority 1) 
+4. Kill enemies add points (Priority 2)
