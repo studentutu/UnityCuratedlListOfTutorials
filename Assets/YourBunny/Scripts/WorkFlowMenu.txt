@@ -1,0 +1,11 @@
+1.Play
+  Settings
+  Store
+  Best score
+  Exit
+
+2. Score
+   Back batton
+   Store
+   	Slaid 
+   Boosts    
