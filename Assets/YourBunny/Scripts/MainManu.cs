@@ -26,6 +26,9 @@ public class MainManu : MonoBehaviour
    }
    
 
+  
+   
+   
    private void OnDisable()
    {
       Settings.onClick.RemoveListener(OnSettingsClick);
@@ -38,10 +41,15 @@ public class MainManu : MonoBehaviour
       SettingsPannel.SetActive(true);
    }
 
-   
-   private void OnStoreClick()
+
+
+   public void OnStoreClick()
    {
       StorePannel.SetActive(true);
    }
+
+   
+
+
 }
 
