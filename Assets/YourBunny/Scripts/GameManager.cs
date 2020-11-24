@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         if (other.HittsPoints>0)
         {
             other.HittsPoints--;
+            other.gameObject.transform.position +=new Vector3(0f,1f,0f  ); 
         }
         else
         {
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void RespawnEnemies()
+    public void RespawnEnemies()
     {
         //Choose random index
         //Instantion random prefab on random place on x 

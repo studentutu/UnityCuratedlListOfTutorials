@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2052753362598795028}
   - component: {fileID: 2052753362598795029}
   - component: {fileID: 852521665794717984}
+  - component: {fileID: 5383317403380652966}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -135,5 +136,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b57ff40d6c3f944849589a3bf66179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HittsPoints: 3
-  ScoreForEmemies: 3
+  HittsPoints: 2
+  ScoreForEmemies: 5
+--- !u!54 &5383317403380652966
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052753362598795026}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

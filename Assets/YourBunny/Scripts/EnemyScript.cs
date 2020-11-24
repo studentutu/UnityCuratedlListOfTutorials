@@ -10,6 +10,7 @@ public class EnemyScript : MonoBehaviour
    public void CheckClickOnMe()
    {
       GameManager.Instance.ChekClick(this);
+      
    }
    
       
