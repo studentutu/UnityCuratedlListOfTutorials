@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainManu : MonoBehaviour
@@ -11,13 +12,21 @@ public class MainManu : MonoBehaviour
    public Button Settings;
    public Button Store;
    public Button Exit;
+   
 
    [Header("Pannels")]
    
    public GameObject SettingsPannel;
    public GameObject StorePannel;
+
+
+   private void Awake()
+   {
    
-   
+
+   }
+
+
    private void OnEnable()
    {
       Settings.onClick.AddListener(OnSettingsClick);

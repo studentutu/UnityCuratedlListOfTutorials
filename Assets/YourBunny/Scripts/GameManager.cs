@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;   //Pattern singleton
+    public static GameManager  Instance;   //Pattern singleton
 
     [SerializeField] private List<GameObject> ListEnemies;
-    
-    private void Awake()
-    {
-        Instance = this;
-
-    }
     
     public Button Bomb;
     public Button Frezze;
@@ -23,6 +20,24 @@ public class GameManager : MonoBehaviour
     public Button Damage;
     public Text ScoreText;
     private int ScorePoint=0;
+    public Text BestScore; 
+    private  Save sv = new Save();
+    
+    public void Awake()
+    {
+        Instance = this;
+        if (PlayerPrefs.HasKey("SV"))
+        {
+            sv = JsonUtility.FromJson<Save>(PlayerPrefs.GetString("SV"));
+            ScorePoint = sv.score;
+        }
+        
+        
+
+    }
+
+    
+
 
     public void ChekClick(EnemyScript other)
     {
@@ -36,11 +51,13 @@ public class GameManager : MonoBehaviour
         {
            ScorePoint+=other.ScoreForEmemies;
            ScoreText.text = "Score " + ScorePoint+ " $"; 
-           Destroy(other.gameObject); 
+        
+           Destroy(other.gameObject);
            RespawnEnemies();
+           
         }
         
-        
+
 
     }
 
@@ -55,4 +72,36 @@ public class GameManager : MonoBehaviour
         Spawned.transform.position = randomRange;
     }
 
-}
+    
+    
+    
+    public void BestScoreForButton()
+    {
+            BestScore.text = "Best Score " + ScorePoint;
+   
+    }
+    
+    
+    public void OnApplicationQuit()
+    {
+        JsonUtility.ToJson(sv);
+        sv.score = ScorePoint;
+        PlayerPrefs.SetString("SV", JsonUtility.ToJson(sv));
+      
+    }
+    
+    
+    
+    
+
+    [Serializable]
+    public class Save
+    {
+        public int score;
+    }
+
+    
+        
+    }
+
+
