@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YourBunny.Scripts;
 
 public class MainManu : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MainManu : MonoBehaviour
    public Button Settings;
    public Button Store;
    public Button Exit;
+   public Text BestScore;
    
 
    [Header("Pannels")]
@@ -31,6 +33,8 @@ public class MainManu : MonoBehaviour
    {
       Settings.onClick.AddListener(OnSettingsClick);
       Store.onClick.AddListener(OnStoreClick);
+      var sv = JsonUtility.FromJson<Save>(PlayerPrefs.GetString("SV"));
+      BestScore.text = sv.score.ToString();
 
    }
    

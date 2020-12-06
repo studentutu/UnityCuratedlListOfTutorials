@@ -1349,6 +1349,7 @@ MonoBehaviour:
   Speed: {fileID: 1264821692}
   Damage: {fileID: 1761495184}
   ScoreText: {fileID: 719471423}
+  BestScore: {fileID: 0}
 --- !u!4 &1402462189
 Transform:
   m_ObjectHideFlags: 0
