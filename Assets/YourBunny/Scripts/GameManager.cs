@@ -11,7 +11,7 @@ namespace YourBunny.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public static GameManager  Instance;   //Pattern singleton
+        public static GameManager  Instance;   //Pattern singleton GameManager.Intsnce -> service locator (AllServices.Get<GameManager>)
     
         private static int ScorePoint=0;
         private static bool AlredyFromSrotage = false;
