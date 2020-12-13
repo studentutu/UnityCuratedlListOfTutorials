@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Frictionless;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -11,7 +12,7 @@ namespace YourBunny.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public static GameManager  Instance;   //Pattern singleton GameManager.Intsnce -> service locator (AllServices.Get<GameManager>)
+        // public static GameManager  Instance;   //Pattern singleton GameManager.Intsnce -> service locator (AllServices.Get<GameManager>)
     
         private static int ScorePoint=0;
         private static bool AlredyFromSrotage = false;
@@ -29,7 +30,9 @@ namespace YourBunny.Scripts
     
         public void Awake()
         {
-            Instance = this;
+            ServiceFactory.RegisterSingleton<GameManager>(this);
+            
+           // Instance = this;
             if (!AlredyFromSrotage && PlayerPrefs.HasKey("SV"))
             {
                 AlredyFromSrotage = true;

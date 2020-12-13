@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Frictionless;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 using UnityEngine.UI;
 using YourBunny.Scripts;
 
@@ -25,7 +26,7 @@ public class MainManu : MonoBehaviour
    private void Awake()
    {
    
-
+      ServiceFactory.RegisterSingleton<MainManu>();
    }
 
 
