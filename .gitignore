@@ -10,6 +10,14 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+/TutorialPart1/[Ll]ibrary/
+/TutorialPart1/[Tt]emp/
+/TutorialPart1/[Oo]bj/
+/TutorialPart1/[Bb]uild/
+/TutorialPart1/[Bb]uilds/
+/TutorialPart1/[Ll]ogs/
+/TutorialPart1/[Uu]ser[Ss]ettings/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -70,3 +78,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 .idea/
+TutorialPar2/Temp/
+TutorialPar2/Logs/
+TutorialPar2/Library/
