@@ -1,164 +1,168 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-    
-    
 
-public class Manager : MonoBehaviour
-{
-    public VerticalLayoutGroup buttonGroup;
-    public HorizontalLayoutGroup bottonRow;
-    public RectTransform canvasRect;
-    private CalculButton[] bottomButtons;
-    bool canvasChanged;
 
-    public Text digitLabel;
-    public Text operatorLabel;
-    private bool errorDisplayed;
-    private bool displayValid;
-    private bool specialAction;
-    private double currentVal;
-    private double storedVal;
-    private double result;
-    private char storedOperator;
-        
-    private void Awake()
-    {
-        bottomButtons = bottonRow.GetComponentsInChildren<CalculButton>();
-    }
+public class Manager : MonoBehaviour {
 
-    private void Start()
-    {
-        bottonRow.childControlWidth = false;
-        canvasChanged = true;
-        buttonTapped('c');
-    }
+	public VerticalLayoutGroup buttonGroup;
+	public HorizontalLayoutGroup bottomRow;
+	public RectTransform canvasRect;
+	CalculButton[] bottomButtons;
 
-    private void Update()
-    {
-        canvasChanged = false; 
-        adjustButtons(); 
-    }
+	public Text digitLabel;
+	public Text operatorLabel;
+	bool errorDisplayed;
+	bool displayValid;
+	bool specialAction;
+	double currentVal;
+	double storedVal;
+	double result;
+	char storedOperator;
 
-    private void OnRectTransformDimensionsChange()
-    {
-        canvasChanged = true;
-    }
+	bool canvasChanged;
 
-    void adjustButtons()
-    {
-        if (bottomButtons ==null || bottomButtons.Length ==0)
-            return;
-        float buttonSize = canvasRect.sizeDelta.x / 4;
-        float bWidth = buttonSize - bottonRow.spacing;
-        for (int i = 1; i < bottomButtons.Length; i++)
-        {bottomButtons[i].rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, bWidth);
-        }
-        bottomButtons[0].rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, bWidth*2 + bottonRow.spacing);
-    }
+	private void Awake()
+	{
+		bottomButtons = bottomRow.GetComponentsInChildren<CalculButton>();
+	}
 
-    void clearCalc()
-    {
-        digitLabel.text = "0";
-        operatorLabel.text = " ";
-        specialAction = displayValid = errorDisplayed = false;
-        currentVal = result = storedVal = 0;
-        storedOperator = ' ';
-    }
 
-    void updateDigitLabel()
-    {
-        if (!errorDisplayed)
-            digitLabel.text = currentVal.ToString();
-        displayValid = false;
-    }
+	// Use this for initialization
+	void Start () {
+		bottomRow.childControlWidth = false;
+		canvasChanged = true;
+		buttonTapped('c');
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (canvasChanged)
+		{
+			canvasChanged = false;
+			adjustButtons();
+		}
+		
+	}
 
-    void calcResult(char activeOp)
-    {
-        switch (activeOp)
-        {
-            case '=':
-                result = currentVal;
-                break;
-            case '+':
-                result = storedVal + currentVal;
-                break;
-            case '-':
-                result = storedVal - currentVal;
-                break;
-            case 'x':
-                result = storedVal * currentVal;
-                break;
-            case '÷':
-                if (currentVal!=0)
-                {
-                    result = storedVal / currentVal;
-                }
-                else
-                {
-                    errorDisplayed = true;
-                    digitLabel.text = "ERROR";
-                }
+	private void OnRectTransformDimensionsChange()
+	{
+		canvasChanged = true;
+	}
 
-                break;
-            default:
-                Debug.Log("Unknown: " + activeOp);
-                break;
-        }
+	void adjustButtons()
+	{
+		if (bottomButtons == null || bottomButtons.Length == 0)
+			return;
+		float buttonSize = canvasRect.sizeDelta.x / 4;
+		float bWidth = buttonSize - bottomRow.spacing;
+		for (int i = 1; i < bottomButtons.Length;i++)
+		{
+			bottomButtons[i].rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+																	 bWidth);
+		}
+		bottomButtons[0].rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+																 bWidth * 2 + bottomRow.spacing);
+	}
 
-        currentVal = result;
-        updateDigitLabel();
-    }
+	void clearCalc()
+	{
+		digitLabel.text = "0";
+		operatorLabel.text = "";
+		specialAction = displayValid = errorDisplayed = false;
+		currentVal = result = storedVal = 0;
+		storedOperator = ' ';
+	}
+	void updateDigitLabel()
+	{
+		if (!errorDisplayed)
+			digitLabel.text = currentVal.ToString();
+		displayValid = false;
+	}
 
-    public void buttonTapped(char caption)
-    {
-        if(errorDisplayed)
-            clearCalc();
-        if ((caption >= '0' && caption <= '9') || caption == '.')
-        {
-            if (digitLabel.text.Length < 15 || !displayValid)
-            {
-                if (!displayValid)
-                    digitLabel.text = (caption == '.' ? "0" : "");
-                else if (digitLabel.text == "0" && caption != '.')
-                    digitLabel.text = "";
-                digitLabel.text += caption;
-                displayValid = true;
-            }
-        }
-        else if (caption == 'c')
-        {
-            clearCalc();
-        }
-        else if (caption == '÷')
-        {
-            currentVal = -double.Parse(digitLabel.text);
-            updateDigitLabel();
-            specialAction = true;
-        }
-        else if  (caption == '%')
-        {
-            currentVal = double.Parse(digitLabel.text) / 100.0d;
-            updateDigitLabel();
-            specialAction = true;
-        }
-        else if (displayValid || storedOperator =='=' || specialAction)
-        {
-            currentVal = double.Parse(digitLabel.text);
-            displayValid = false;
-            if (storedOperator != ' ')
-            {
-                calcResult(storedOperator);
-                storedOperator = ' ';
-            }
+	void calcResult(char activeOp)
+	{
+		switch (activeOp)
+		{
+			case '=':
+				result = currentVal;
+				break;
+			case '+':
+				result = storedVal + currentVal;
+				break;
+			case '-':
+				result = storedVal - currentVal;
+				break;
+			case 'x':
+				result = storedVal * currentVal;
+				break;
+			case '÷':
+				if (currentVal!=0)
+				{
+					result = storedVal / currentVal;
+				}
+				else
+				{
+					errorDisplayed = true;
+					digitLabel.text = "ERROR";
+				}
+				break;
+			default:
+				Debug.Log("unknown: " + activeOp);
+				break;
+		}
+		currentVal = result;
+		updateDigitLabel();
+	}
 
-            operatorLabel.text = caption.ToString();
-            storedOperator = caption;
-            storedVal = currentVal;
-            updateDigitLabel();
-            specialAction = false;
-        }
-    }
+	public void buttonTapped(char caption)
+	{
+		if (errorDisplayed)
+			clearCalc();
+
+		if ((caption>='0' && caption<='9')||caption=='.')
+		{
+			if (digitLabel.text.Length<15 || !displayValid)
+			{
+				if (!displayValid)
+					digitLabel.text = (caption == '.' ? "0" : "");
+				else if (digitLabel.text == "0" && caption != '.')
+					digitLabel.text = "";
+				digitLabel.text += caption;
+				displayValid = true;
+			}
+		}
+		else if (caption=='c')
+		{
+			clearCalc();
+		}
+		else if (caption == '±')
+		{
+			currentVal = -double.Parse(digitLabel.text);
+			updateDigitLabel();
+			specialAction = true;
+		}
+		else if (caption == '%')
+		{
+			currentVal = double.Parse(digitLabel.text) / 100.0d;
+			updateDigitLabel();
+			specialAction = true;
+		}
+		else if (displayValid || storedOperator == '=' || specialAction)
+		{
+			currentVal = double.Parse(digitLabel.text);
+			displayValid = false;
+			if (storedOperator!=' ')
+			{
+				calcResult(storedOperator);
+				storedOperator = ' ';
+			}
+			operatorLabel.text = caption.ToString();
+			storedOperator = caption;
+			storedVal = currentVal;
+			updateDigitLabel();
+			specialAction = false;
+		}
+	}
 }

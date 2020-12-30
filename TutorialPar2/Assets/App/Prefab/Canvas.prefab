@@ -801,7 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonGroup: {fileID: 9143791478661142917}
-  bottonRow: {fileID: 9143791478003352446}
+  bottomRow: {fileID: 0}
   canvasRect: {fileID: 9143791478784819186}
   digitLabel: {fileID: 9143791478269331612}
   operatorLabel: {fileID: 9143791477479256218}
