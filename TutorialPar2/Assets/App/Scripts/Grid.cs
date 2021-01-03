@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class Grid : MonoBehaviour
 
     public Vector3 GetNearestPointOnGrid(Vector3 position)
     {
-        position -= transform.position;
+       // position -= transform.position;
 
         int xCount = Mathf.RoundToInt(position.x / size);
         int yCount = Mathf.RoundToInt(position.y / size);
@@ -18,9 +19,17 @@ public class Grid : MonoBehaviour
             (float)yCount * size,
             (float)zCount * size);
 
-        result += transform.position;
+       // result += transform.position;
 
         return result;
+    }
+
+    private void OnValidate()
+    {
+        if (size == 0)
+        {
+            size = 1;
+        }
     }
 
     private void OnDrawGizmos()

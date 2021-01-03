@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+#if FIREBASE_AUTH
 using Firebase.Auth;
+#endif
 using UnityEngine;
 
 public class PlayerAuth : MonoBehaviour
@@ -10,7 +12,7 @@ public class PlayerAuth : MonoBehaviour
     public bool TestAuth;
     public bool TestAuthDelete;
     public UnityEngine.UI.Text LoginText;
-
+    #if FIREBASE_AUTH
     private void OnEnable()
     {
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -32,7 +34,6 @@ public class PlayerAuth : MonoBehaviour
             }
         });
     }
-
     private void OnValidate()
     {
         if (TestAuth)
@@ -88,4 +89,5 @@ public class PlayerAuth : MonoBehaviour
         await Task.Delay(20000);
         return "any";
     }
+    #endif
 }
