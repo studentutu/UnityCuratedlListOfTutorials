@@ -13,12 +13,30 @@ public class AutomaticTest : MonoBehaviour
    [SerializeField]
    private PlayerDataBase PiBiDi ;
 
-      private void OnValidate()
+   private const string keyString = "Key";
+   private string UserGUid
    {
+      get
+      {
+         userguid= PlayerPrefs.GetString(keyString);
+         if (string.IsNullOrEmpty(userguid))
+         {
+            userguid = System.Guid.NewGuid().ToString();
+            SaveKeyToPlayerPrefs(userguid);
+         }
+         return userguid;
+      }
+   }
+   private string userguid = null;
+   
+   
+   private void OnValidate()
+   {
+      
       if (TestDataBase)
       {
          TestDataBase = false;
-         PiBiDi.SavePlayerToDataBase(TestPlayerDataSerialization(), "Bohdan101");
+         PiBiDi.SavePlayerToDataBase(TestPlayerDataSerialization(), UserGUid);
       }
       if (Test)
       {
@@ -28,7 +46,7 @@ public class AutomaticTest : MonoBehaviour
       if (TestDataBaseGET)
       {
          TestDataBaseGET = false;
-          PiBiDi.RealFromDataBase("Bohdan101");
+          PiBiDi.RealFromDataBase(UserGUid);
       }
       
    }
@@ -42,7 +60,11 @@ public class AutomaticTest : MonoBehaviour
       Debug.Log(anibeni.PlayerDataToJSON());
       return anibeni.PlayerDataToJSON();
    }
-   
-   
+
+   private void SaveKeyToPlayerPrefs(string key)
+   {
+      PlayerPrefs.SetString(keyString, key);
+      PlayerPrefs.Save();
+   }
 }
 
