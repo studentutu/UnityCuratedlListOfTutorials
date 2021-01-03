@@ -14,7 +14,7 @@ public class WorldSpawn : MonoBehaviour {
 
     void  Start () {
         StartCoroutine(CreateWorld());
-        Plane.transform.localScale =new Vector3(worldWidth, worldHeight, 0 );
+        Plane.transform.localScale =new Vector3(worldWidth, worldHeight, 5f );
     }
     
     IEnumerator CreateWorld () {
@@ -25,8 +25,8 @@ public class WorldSpawn : MonoBehaviour {
                 yield return new WaitForSeconds(spawnSpeed);
  
                 GameObject block = Instantiate(block1, Vector3.zero, block1.transform.rotation) as GameObject;
-                block.transform.parent = transform;
-                block.transform.localPosition = new Vector3(x, 0, z);
+               // block.transform.parent = transform;
+                block.transform.localPosition = new Vector3(x-10, 0, z-10);
             }
         }
     }
