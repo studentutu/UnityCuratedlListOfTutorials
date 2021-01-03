@@ -133,7 +133,7 @@ public class Manager : MonoBehaviour {
 				displayValid = true;
 			}
 		}
-		else if (caption=='c')
+		else if (caption.ToString().ToLower()=="c")
 		{
 			clearCalc();
 		}
