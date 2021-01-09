@@ -20,9 +20,9 @@ public class TimeBody : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Return))
+		if (Input.GetKeyDown(KeyCode.F1))
 			StartRewind();
-		if (Input.GetKeyUp(KeyCode.Return))
+		if (Input.GetKeyUp(KeyCode.F1))
 			StopRewind();
 	}
 
@@ -30,8 +30,10 @@ public class TimeBody : MonoBehaviour {
 	{
 		if (isRewinding)
 			Rewind();
+		
 		else
 			Record();
+
 	}
 
 	void Rewind ()
