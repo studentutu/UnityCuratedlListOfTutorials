@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 528177655
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8877a35d348066ffcf305ad6f3bca0ed
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4ac49dab7fc5ada66455fdaf78f74159
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 660b845703438174aabc4886c5a8b7c1, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/App/Scripts/Scriptable object/England.asset
+- Assets/App/Scripts/Scriptable object/Italy.asset
+Dependencies: []
